@@ -60,9 +60,12 @@ If you find this project helpful for your research, please consider citing the f
   year={2023}
 }
 
-@inproceedings{ShilongLiu2023GroundingDM,
-  title={Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection},
-  author={Shilong Liu and Zhaoyang Zeng and Tianhe Ren and Feng Li and Hao Zhang and Jie Yang and Chunyuan Li and Jianwei Yang and Hang Su and Jun Zhu and Lei Zhang},
-  year={2023}
+@misc{minderer2022simple,
+      title={Simple Open-Vocabulary Object Detection with Vision Transformers}, 
+      author={Matthias Minderer and Alexey Gritsenko and Austin Stone and Maxim Neumann and Dirk Weissenborn and Alexey Dosovitskiy and Aravindh Mahendran and Anurag Arnab and Mostafa Dehghani and Zhuoran Shen and Xiao Wang and Xiaohua Zhai and Thomas Kipf and Neil Houlsby},
+      year={2022},
+      eprint={2205.06230},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 ```
