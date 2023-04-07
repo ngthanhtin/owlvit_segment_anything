@@ -45,4 +45,4 @@ bash run_demo.sh
 ```
 
 ## Reference
-Please give applause for [IDEA-Research](https://github.com/IDEA-Research/Grounded-Segment-Anything/tree/main/segment_anything)
+Please give applause for [IDEA-Research](https://github.com/IDEA-Research/Grounded-Segment-Anything/tree/main/segment_anything) and [OWL-ViT on HuggingFace](https://huggingface.co/spaces/adirik/OWL-ViT)

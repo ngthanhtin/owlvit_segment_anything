@@ -15,6 +15,8 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
+import gc
+
 def show_mask(mask, ax, random_color=False):
     if random_color:
         color = np.concatenate([np.random.random(3), np.array([0.6])], axis=0)
@@ -115,8 +117,9 @@ if __name__ == "__main__":
     model, processor = load_owlvit(checkpoint_path=args.owlvit_model, device=args.device)
 
     # run object detection model
-    inputs = processor(text=texts, images=image, return_tensors="pt").to(args.device)
-    outputs = model(**inputs)
+    with torch.no_grad():
+        inputs = processor(text=texts, images=image, return_tensors="pt").to(args.device)
+        outputs = model(**inputs)
     
     # Target image sizes (height, width) to rescale box predictions [batch_size, 2]
     target_sizes = torch.Tensor([image.size[::-1]])
@@ -152,7 +155,13 @@ if __name__ == "__main__":
         "labels": [text[idx] for idx in labels]
     }
 
-    # run segment anything
+    # release the OWL-ViT
+    model.cpu()
+    del model
+    gc.collect()
+    torch.cuda.empty_cache()
+
+    # run segment anything (SAM)
     predictor = SamPredictor(build_sam(checkpoint="./sam_vit_h_4b8939.pth"))
     image = cv2.imread(args.image_path)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
