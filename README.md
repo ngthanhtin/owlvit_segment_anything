@@ -1,4 +1,4 @@
-# Grounded-Segment-Anything
+# Open-vocabulary-Segment-Anything
 An interesting demo by combining [OWL-ViT](https://arxiv.org/abs/2205.06230) of Google and [Segment Anything](https://ai.facebook.com/research/publications/segment-anything/) of Meta!
 
 ![Detect Result](./outputs/owlvit_box.jpg)
@@ -7,10 +7,12 @@ An interesting demo by combining [OWL-ViT](https://arxiv.org/abs/2205.06230) of 
 ## Highlight
 - Detect and Segment everything with Language!
 - Detect objects in more details (small objects)
+- Image-conditioned detection and Text-condition detection
 
 
 ## Catelog
 - [x] OWL-ViT + Segment-Anything Demo
+- [ ] Image-conditioned detection
 - [ ] Huggingface Demo
 
 ## Installation
