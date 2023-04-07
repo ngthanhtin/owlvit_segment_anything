@@ -84,19 +84,15 @@ def load_owlvit(checkpoint_path="owlvit-large-patch14", device='cpu'):
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser("OWL-ViT Segment Aything", add_help=True)
-    # parser.add_argument(
-    #     "--checkpoint_path", "-p", type=str, required=True, help="path to checkpoint file"
-    # )
+
     parser.add_argument("--image_path", "-i", type=str, required=True, help="path to image file")
     parser.add_argument("--text_prompt", "-t", type=str, required=True, help="text prompt")
     parser.add_argument(
         "--output_dir", "-o", type=str, default="outputs", required=True, help="output directory"
     )
-
     parser.add_argument('--owlvit_model', help='select model', default="owlvit-base-patch32", choices=["owlvit-base-patch32", "owlvit-base-patch16", "owlvit-large-patch14"])
-
     parser.add_argument("--box_threshold", type=float, default=0.0, help="box threshold")
-
+    parser.add_argument('--get_topk', help='detect topk boxes per class or not', action="store_true")
     parser.add_argument('--device', help='select device', default="cuda:0", type=str)
     args = parser.parse_args()
 
@@ -106,6 +102,8 @@ if __name__ == "__main__":
     text_prompt = args.text_prompt
     output_dir = args.output_dir
     box_threshold = args.box_threshold
+    if args.get_topk:
+        box_threshold = 0.0
 
     # make dir
     os.makedirs(output_dir, exist_ok=True)
@@ -124,20 +122,21 @@ if __name__ == "__main__":
     # Target image sizes (height, width) to rescale box predictions [batch_size, 2]
     target_sizes = torch.Tensor([image.size[::-1]])
     # Convert outputs (bounding boxes and class logits) to COCO API
-    results = processor.post_process_object_detection(outputs=outputs, threshold=args.box_threshold, target_sizes=target_sizes.to(args.device))
+    results = processor.post_process_object_detection(outputs=outputs, threshold=box_threshold, target_sizes=target_sizes.to(args.device))
     scores = torch.sigmoid(outputs.logits)
     topk_scores, topk_idxs = torch.topk(scores, k=1, dim=1)
     
     i = 0  # Retrieve predictions for the first image for the corresponding text queries
     text = texts[i]
-    # boxes, scores, labels = results[i]["boxes"], results[i]["scores"], results[i]["labels"]
+    if args.get_topk:    
+        topk_idxs = topk_idxs.squeeze(1).tolist()
+        topk_boxes = results[i]['boxes'][topk_idxs]
+        topk_scores = topk_scores.view(len(text), -1)
+        topk_labels = results[i]["labels"][topk_idxs]
+        boxes, scores, labels = topk_boxes, topk_scores, topk_labels
+    else:
+        boxes, scores, labels = results[i]["boxes"], results[i]["scores"], results[i]["labels"]
     
-    topk_idxs = topk_idxs.squeeze(1).tolist()
-    topk_boxes = results[i]['boxes'][topk_idxs]
-    topk_scores = topk_scores.view(len(text), -1)
-    topk_labels = results[i]["labels"][topk_idxs]
-
-    boxes, scores, labels = topk_boxes, topk_scores, topk_labels
 
     # Print detected objects and rescaled box coordinates
     for box, score, label in zip(boxes, scores, labels):
@@ -194,4 +193,4 @@ if __name__ == "__main__":
     # grounded results
     image_pil = Image.open(args.image_path)
     image_with_box = plot_boxes_to_image(image_pil, pred_dict)[0]
-    image_with_box.save(os.path.join(f"./{output_dir}/pred.jpg"))
+    image_with_box.save(os.path.join(f"./{output_dir}/owlvit_box.jpg"))

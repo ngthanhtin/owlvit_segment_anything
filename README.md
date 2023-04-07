@@ -46,3 +46,21 @@ bash run_demo.sh
 
 ## Reference
 Please give applause for [IDEA-Research](https://github.com/IDEA-Research/Grounded-Segment-Anything/tree/main/segment_anything) and [OWL-ViT on HuggingFace](https://huggingface.co/spaces/adirik/OWL-ViT)
+
+
+## Citation
+If you find this project helpful for your research, please consider citing the following BibTeX entry.
+```BibTex
+@article{kirillov2023segany,
+  title={Segment Anything}, 
+  author={Kirillov, Alexander and Mintun, Eric and Ravi, Nikhila and Mao, Hanzi and Rolland, Chloe and Gustafson, Laura and Xiao, Tete and Whitehead, Spencer and Berg, Alexander C. and Lo, Wan-Yen and Doll{\'a}r, Piotr and Girshick, Ross},
+  journal={arXiv:2304.02643},
+  year={2023}
+}
+
+@inproceedings{ShilongLiu2023GroundingDM,
+  title={Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection},
+  author={Shilong Liu and Zhaoyang Zeng and Tianhe Ren and Feng Li and Hao Zhang and Jie Yang and Chunyuan Li and Jianwei Yang and Hang Su and Jun Zhu and Lei Zhang},
+  year={2023}
+}
+```
