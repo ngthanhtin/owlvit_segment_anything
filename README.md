@@ -1,14 +1,16 @@
 # Grounded-Segment-Anything
 An interesting demo by combining [OWL-ViT](https://arxiv.org/abs/2205.06230) of Google and [Segment Anything](https://ai.facebook.com/research/publications/segment-anything/) of Meta!
 
-![](./demo.jpg)
+![Detect Result](./outputs/owlvit_box.jpg)
+![Segment Anything Result](./outputs/owlvit_segment_anything_output.jpg)
 
 ## Highlight
 - Detect and Segment everything with Language!
+- Detect objects in more details (small objects)
 
 
 ## Catelog
-- [x] GroundingDINO + Segment-Anything Demo
+- [x] OWL-ViT + Segment-Anything Demo
 - [ ] Huggingface Demo
 
 ## Installation
@@ -39,3 +41,6 @@ wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
 ```bash
 bash run_demo.sh
 ```
+
+## Reference
+Please give applause for [IDEA-Research](https://github.com/IDEA-Research/Grounded-Segment-Anything/tree/main/segment_anything)
