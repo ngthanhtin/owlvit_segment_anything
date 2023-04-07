@@ -43,6 +43,8 @@ wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
 ```bash
 bash run_demo.sh
 ```
+![Detect Result](./outputs/owlvit_box_2.jpg)
+![Segment Anything Result](./outputs/owlvit_segment_anything_output_2.jpg)
 
 ## Reference
 Please give applause for [IDEA-Research](https://github.com/IDEA-Research/Grounded-Segment-Anything/tree/main/segment_anything) and [OWL-ViT on HuggingFace](https://huggingface.co/spaces/adirik/OWL-ViT)
