@@ -1,1 +1,2 @@
 *.pth
+./segment_anything/segment_anything.egg-info
