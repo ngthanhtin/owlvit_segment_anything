@@ -13,7 +13,7 @@ An interesting demo by combining [OWL-ViT](https://arxiv.org/abs/2205.06230) of 
 ## Catelog
 - [x] OWL-ViT + Segment-Anything Demo
 - [ ] Image-conditioned detection
-- [ ] Huggingface Demo
+- [x] [Huggingface Demo](https://huggingface.co/spaces/ngthanhtinqn/Segment_Anything_With_OWL-ViT)
 
 ## Installation
 The code requires `python>=3.8`, as well as `pytorch>=1.7` and `torchvision>=0.8`. Please follow the instructions [here](https://pytorch.org/get-started/locally/) to install both PyTorch and TorchVision dependencies. Installing both PyTorch and TorchVision with CUDA support is strongly recommended.
