@@ -4,6 +4,7 @@ An interesting demo by combining [OWL-ViT](https://arxiv.org/abs/2205.06230) of 
 ![Detect Result](./outputs/owlvit_box.jpg)
 ![Segment Anything Result](./outputs/owlvit_segment_anything_output.jpg)
 ![Inpainting Result](./outputs/grounded_sam_inpainting_output.jpg)
+
 `prompt: a bird with a yellow wing`
 
 ## Highlight
