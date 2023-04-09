@@ -1,0 +1,1 @@
+python demo_inpainting.py --get_topk --image_path demo_images/tanager.jpg --text_prompt back,beak,belly,breast,crown,forehead,eyes,legs,wings,nape,tail,throat --inpaint_prompt "a bird with a yellow wing" -o outputs/ --device cuda:1
