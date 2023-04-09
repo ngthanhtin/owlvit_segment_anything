@@ -3,6 +3,8 @@ An interesting demo by combining [OWL-ViT](https://arxiv.org/abs/2205.06230) of 
 
 ![Detect Result](./outputs/owlvit_box.jpg)
 ![Segment Anything Result](./outputs/owlvit_segment_anything_output.jpg)
+![Inpainting Result](./outputs/grounded_sam_inpainting_output.jpg)
+`prompt: a bird with a yellow wing`
 
 ## Highlight
 - Detect and Segment everything with Language!
@@ -13,6 +15,7 @@ An interesting demo by combining [OWL-ViT](https://arxiv.org/abs/2205.06230) of 
 ## Catelog
 - [x] OWL-ViT + Segment-Anything Demo
 - [ ] Image-conditioned detection
+- [x] Inpainting using StableDiffusion
 - [x] [Huggingface Demo](https://huggingface.co/spaces/ngthanhtinqn/Segment_Anything_With_OWL-ViT)
 
 ## Installation
