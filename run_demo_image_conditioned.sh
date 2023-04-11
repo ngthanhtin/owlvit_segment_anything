@@ -1,0 +1,1 @@
+python demo_image_conditioned.py --image_path demo_images/demo1.jpg --query_image_path demo_images/bear_face_1.png -o outputs/ --device cuda:6

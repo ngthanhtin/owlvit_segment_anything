@@ -1,1 +1,1 @@
-python demo.py --image_path demo_images/tanager.jpg --text_prompt back,beak,belly,breast,crown,forehead,eyes,legs,wings,nape,tail,throat -o outputs/ --device cuda:1
+python demo.py --image_path demo_images/tanager.jpg --text_prompt back,beak,belly,breast,crown,forehead,eyes,legs,wings,nape,tail,throat -o outputs/ --device cuda:1 --get_topk
