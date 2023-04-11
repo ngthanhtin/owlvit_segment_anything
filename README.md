@@ -11,11 +11,12 @@ An interesting demo by combining [OWL-ViT](https://arxiv.org/abs/2205.06230) of 
 - Detect and Segment everything with Language!
 - Detect objects in more details (small objects)
 - Image-conditioned detection and Text-condition detection
+- Use Stable Diffusion to do inpainting
 
 
 ## Catelog
 - [x] OWL-ViT + Segment-Anything Demo
-- [ ] Image-conditioned detection
+- [x] Image-conditioned detection
 - [x] Inpainting using StableDiffusion
 - [x] [Huggingface Demo](https://huggingface.co/spaces/ngthanhtinqn/Segment_Anything_With_OWL-ViT)
 

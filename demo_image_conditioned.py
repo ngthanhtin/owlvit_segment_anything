@@ -161,6 +161,35 @@ if __name__ == "__main__":
     gc.collect()
     # torch.cuda.empty_cache()
 
+    # run segment anything (SAM)
+    predictor = SamPredictor(build_sam(checkpoint="./sam_vit_h_4b8939.pth"))
+    image = cv2.imread(args.image_path)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    predictor.set_image(image)
+    
+    H, W = size[1], size[0]
+
+    for i in range(boxes.shape[0]):
+        boxes[i] = torch.Tensor(boxes[i])
+
+    boxes = torch.tensor(boxes, device=predictor.device)
+
+    transformed_boxes = predictor.transform.apply_boxes_torch(boxes, image.shape[:2])
+    
+    masks, _, _ = predictor.predict_torch(
+        point_coords = None,
+        point_labels = None,
+        boxes = transformed_boxes,
+        multimask_output = False,
+    )
+    plt.figure(figsize=(10, 10))
+    plt.imshow(image)
+    for mask in masks:
+        show_mask(mask.cpu().numpy(), plt.gca(), random_color=True)
+    for box in boxes:
+        show_box(box.numpy(), plt.gca())
+    plt.axis('off')
+    plt.savefig(f"./{output_dir}/owlvit_segment_anything_output.jpg")
     
     # grounded results
     image_pil = Image.open(args.image_path)
