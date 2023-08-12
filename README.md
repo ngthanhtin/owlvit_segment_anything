@@ -32,7 +32,7 @@ python -m pip install -e segment_anything
 Install OWL-ViT (the OWL-ViT is included in transformer library):
 
 ```bash
-pip install transformer
+pip install transformers
 ```
 
 More details can be found in [installation segment anything](https://github.com/facebookresearch/segment-anything#installation)
